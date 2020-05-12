@@ -1,0 +1,26 @@
+
+<div class="card" *ngIf="vendor==null">
+    <p class="card-text">No Products Found</p>
+</div>
+
+<div class="container" *ngIf="vendor!=null">
+    <h3>Products list of {{vendor.name}}</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of vendor.products">
+                <td>{{c.productId}}</td>
+                <td>{{c.productName}}</td>
+                <td>{{c.productDescription}}</td>
+                <td>{{c.price}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

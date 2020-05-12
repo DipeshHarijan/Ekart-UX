@@ -1,0 +1,33 @@
+
+<div class="container">
+    <h3>Vendors list</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>VendorId</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Mobile</th>
+                <th>EmailId</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let c of vendors">
+                <td>{{c.vendorId}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.city}}</td>
+                <td>{{c.mobileNo}}</td>
+                <td>{{c.emailId}}</td>
+                <td>
+                    <button class="btn btn-success btn-sm" (click)="setVendor(c)">Show Products</button>
+                    <button class="btn btn-warning btn-sm ml-1" [routerLink]="'/edit/'+c.vendorId">Update</button>
+                    <button class="btn btn-danger btn-sm ml-1"  (click)="delete(c.vendorId)">Delete</button>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <button class="btn btn-info" routerLink="/add" >Add Vendor</button>
+</div>
+<app-products [vendor]="vendor"></app-products>
