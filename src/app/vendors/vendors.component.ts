@@ -13,17 +13,30 @@ import { Product } from '../model/product';
 export class VendorsComponent implements OnInit {
   public vendors: Vendor[];
   vendor: Vendor;
+  message: string;
 
    constructor(private vendorService: VendorService,private route: Router) {}
 
   ngOnInit() {
-   this.vendorService.getAll().subscribe(data=>this.vendors=data);
+   this.refreshVendors();
+  }
+
+  setMessage(){
+    this.message = "";
+  }
+
+  refreshVendors(){
+    this.vendorService.getAll().subscribe(data=>this.vendors=data);
   }
 
   delete(id: number){
     if(confirm(`Are you sure to delete the vendor#${id}`)){
-      this.vendorService.deleteVendor(id).subscribe(data=>console.log(data));
-    }
+      this.vendorService.deleteVendor(id).subscribe(data=>{
+          console.log(data)
+          this.message = `Vendor with id ${id} has been deleted`;
+          this.refreshVendors();
+       })
+     }
   }
 
   public setVendor(vendor: Vendor) {
