@@ -18,7 +18,6 @@ const routes: Routes = [
   {path: "logout", component: LogoutComponent, canActivate:[RouteGuardService]},
   {path: "add", component: VendorFormComponent, canActivate:[RouteGuardService]},
   {path: "edit/:id", component: VendorFormComponent, canActivate:[RouteGuardService]},
-  {path: "products", component: ProductsComponent, canActivate:[RouteGuardService]},
   {path: "**", component: PageNotFoundComponent}
 ];
 
