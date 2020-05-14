@@ -10,6 +10,7 @@ export class HardcodedAuthenticationService {
   authenticate(username: string, password: string): boolean {
     if (username === "dipesh" && password === "dipesh") {
       sessionStorage.setItem('authenticatedUser', username);
+      sessionStorage.setItem('userPassword', password);
       return true;
     }
     return false;
@@ -21,5 +22,6 @@ export class HardcodedAuthenticationService {
   }
   logout(){
     sessionStorage.removeItem("authenticatedUser");
+    sessionStorage.removeItem("userPassword");
   }
 }
